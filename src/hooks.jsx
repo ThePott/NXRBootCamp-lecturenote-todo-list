@@ -1,6 +1,5 @@
-import { useState, useMemo } from "react"
+import { createContext, useContext, useState } from "react"
 import dummyData from "./dummy-data.json"
-import { createContext, useContext } from "react"
 
 const StateValueContext = createContext()
 const StateSetterContext = createContext()
@@ -23,4 +22,4 @@ const useStateValueContext = () => useContext(StateValueContext)
 
 const useStateSetterContext = () => useContext(StateSetterContext)
 
-export { StateProvider, useStateValueContext, useStateSetterContext }
+export { StateProvider, useStateSetterContext, useStateValueContext }
