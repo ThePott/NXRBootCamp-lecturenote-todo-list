@@ -1,53 +1,49 @@
-import React, { useState } from 'react'
-import dummyData from "./dummy-data.json"
+import React from 'react'
+import './App.css'
+import { StateProvider, useStateValueContext, useStateSetterContext } from './hooks'
 
-const Todo = React.memo(
-  ({ todo, setTodoArray }) => {
-    const deleteCurrentTodo = (todo) => {
-      console.log("---- delete todo:", todo.content)
-      setTodoArray((prev) => {
-        const filteredArray = prev.filter((remaining) => remaining.id !== todo.id)
-        return filteredArray
-      })
-    }
+const Todo = ({ todoId, todoContent }) => {
+  const setTodoArray = useStateSetterContext()
 
-    console.log("---- re-rendering todo:", todo.content)
-
-    return (
-      <li>
-        {todo.content}
-        <button>수정</button>
-        <button onClick={() => deleteCurrentTodo(todo)}>삭제</button>
-      </li>
-    )
+  const deleteCurrentTodo = () => {
+    setTodoArray((prev) => {
+      const filteredTodoArray = prev.filter((todo) => todo.id !== todoId)
+      return filteredTodoArray
+    })
   }
-)
+  
+  console.log("---- re-rendering todo:", todoContent)
+  return (
+    <li>
+      {todoContent}
+      <button onClick={deleteCurrentTodo}>삭제</button>
+    </li>
+  )
+}
 
+const MemoizedTodo = React.memo(Todo)
+
+const TodoList = () => {
+  const context = useStateValueContext()
+  const todoArray = context
+
+  console.log("---- re-rendering todo list:", todoArray)
+  if (!todoArray) { return null }
+  return (
+    <ul>
+      {todoArray.map((todo) => <MemoizedTodo key={todo.id} todoId={todo.id} todoContent={todo.content} />)}
+    </ul>
+  )
+}
 
 const App = () => {
-  const [todoArray, setTodoArray] = useState(dummyData)
-
-  const [newContent, setnewContent] = useState("")
-  const addnewContent = () => {
-    console.log("---- new content:", newContent)
-
-    const newTodo = {
-      id: Number(new Date()),
-      content: newContent
-    }
-    setTodoArray([...todoArray, newTodo])
-
-  }
-
-  console.log("---- re-rendering app")
   return (
-    <div>
-      <ul>
-        {todoArray.map((todo) => <Todo key={todo.id} todo={todo} setTodoArray={setTodoArray} />)}
-      </ul>
-      <input type="text" onChange={(event) => setnewContent(event.target.value)} />
-      <button onClick={addnewContent}>추가하기</button>
-    </div>
+    <>
+      {/* // 앱의 자식으로 연결된 컴포넌트들은 모두 같은 State을 공유한다. */}
+      <StateProvider>
+        <TodoList />
+      </StateProvider>
+    </>
   )
 }
 

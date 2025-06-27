@@ -1,12 +1,25 @@
-# React + Vite
+# Assignment for NXRBootCamp React Basic Course
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
+This is app that demonstrate how basic states are handled in React.
+There are two branches that solves identical problem in different ways.
+1. `main`
+    Parent component send down(correct term?) to child component.
+2. `feature-singleton`
+    All states are stored in context, and child components use context they need.
 
-Currently, two official plugins are available:
+## Clone this app
+In the project directory, you can run:
+```bash
+git clone https://github.com/ThePott/NXRBootCamp-react-basic-assignment-app-by-create-react-app
+```
+Then, change directory to cloned project and run
+```bash
+npm install
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requirements",
+* Node.js
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## License
+MIT
