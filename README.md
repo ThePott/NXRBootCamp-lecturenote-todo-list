@@ -19,7 +19,7 @@ There are two branches that solve identical problems in different ways:
 ## Clone this app
 In the project directory, you can run:
 ```bash
-git clone https://github.com/ThePott/---- INSERT REPO URL ----
+git clone https://github.com/ThePott/https://github.com/ThePott/NXRBootCamp-lecturenote-todo-list
 ```
 Then, change directory to cloned project and run
 ```bash
