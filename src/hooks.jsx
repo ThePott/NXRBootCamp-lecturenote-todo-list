@@ -8,8 +8,8 @@ const StateProvider = ({ children }) => {
     const [todoArray, setTodoArray] = useState(dummyData)
     console.log("---- todoArray changed:", todoArray)
 
-
     return (
+        // LIMITAION: You need to add new context for new state
         <StateSetterContext.Provider value={setTodoArray}>
             <StateValueContext.Provider value={todoArray}>
                 {children}

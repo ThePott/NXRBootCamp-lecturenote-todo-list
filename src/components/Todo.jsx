@@ -15,6 +15,7 @@ const Todo = ({ todoId, todoContent }) => {
   return (
     <li>
       {todoContent}
+      <button onClick={() => {}}>수정</button>
       <button onClick={deleteCurrentTodo}>삭제</button>
     </li>
   )
