@@ -1,12 +1,42 @@
-# React + Vite
+# Assignment for NXRBootCamp React Basic Course
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
+This app demonstrates how basic states are handled in React using two different approaches.
+There are two branches that solve identical problems in different ways:
 
-Currently, two official plugins are available:
+1. main - Props drilling: Parent components pass state down to child components
+2. feature-singleton - Context API: All states are stored in context, and child components access the context they need
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Props Drilling vs Singleton Context
+**TL;DR:** Without external library such as Zustand or Redux, props drilling is better.
 
-## Expanding the ESLint configuration
+### Limitations of Current Singleton Context Approach:
+1. If one value of context changes, it is treated as the context itself has been changed.
+2. If context changes, all components calling that context get re-rendered.
+3. To solve this problem with `context`, you need to create new context for each state, which is nothing better than props drilling.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Clone this app
+In the project directory, you can run:
+```bash
+git clone https://github.com/ThePott/---- INSERT REPO URL ----
+```
+Then, change directory to cloned project and run
+```bash
+npm install
+```
+
+## Requirements",
+* Node.js
+
+## Exploring Different Approaches
+
+Main branch: Experience props drilling approach
+Feature-singleton branch: Experience context-based state management
+
+```bash
+git switch feature-singleton
+```
+
+## License
+MIT
