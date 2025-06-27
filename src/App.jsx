@@ -1,53 +1,26 @@
-import React, { useState } from 'react'
+import { useState, useMemo } from 'react'
+import TodoList from './components/TodoList'
 import dummyData from "./dummy-data.json"
-
-const Todo = React.memo(
-  ({ todo, setTodoArray }) => {
-    const deleteCurrentTodo = (todo) => {
-      console.log("---- delete todo:", todo.content)
-      setTodoArray((prev) => {
-        const filteredArray = prev.filter((remaining) => remaining.id !== todo.id)
-        return filteredArray
-      })
-    }
-
-    console.log("---- re-rendering todo:", todo.content)
-
-    return (
-      <li>
-        {todo.content}
-        <button>수정</button>
-        <button onClick={() => deleteCurrentTodo(todo)}>삭제</button>
-      </li>
-    )
-  }
-)
-
+import TodoInput from './components/TodoInput'
 
 const App = () => {
   const [todoArray, setTodoArray] = useState(dummyData)
+  const [editingTodoId, setEditingTodoId] = useState(null)
 
-  const [newContent, setnewContent] = useState("")
-  const addnewContent = () => {
-    console.log("---- new content:", newContent)
+  const editingTodo = useMemo(
+    () => {
+      if (editingTodoId === null) { return null }
+      const editingTodo = todoArray.find((todo) => todo.id === editingTodoId)
+      return editingTodo
+    },
+    [editingTodoId]
+  )
 
-    const newTodo = {
-      id: Number(new Date()),
-      content: newContent
-    }
-    setTodoArray([...todoArray, newTodo])
-
-  }
-
-  console.log("---- re-rendering app")
   return (
-    <div>
-      <ul>
-        {todoArray.map((todo) => <Todo key={todo.id} todo={todo} setTodoArray={setTodoArray} />)}
-      </ul>
-      <input type="text" onChange={(event) => setnewContent(event.target.value)} />
-      <button onClick={addnewContent}>추가하기</button>
-    </div>
+    <>
+      <TodoList todoArray={todoArray} setTodoArray={setTodoArray} editingTodoId={editingTodoId} setEditingTodoId={setEditingTodoId}/>
+      <TodoInput setTodoArray={setTodoArray} editingTodo={editingTodo} />
+    </>
   )
 }
 
