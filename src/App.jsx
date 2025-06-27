@@ -19,7 +19,7 @@ const App = () => {
   return (
     <>
       <TodoList todoArray={todoArray} setTodoArray={setTodoArray} editingTodoId={editingTodoId} setEditingTodoId={setEditingTodoId}/>
-      <TodoInput setTodoArray={setTodoArray} editingTodo={editingTodo} />
+      <TodoInput setTodoArray={setTodoArray} editingTodo={editingTodo} setEditingTodoId={setEditingTodoId} />
     </>
   )
 }
