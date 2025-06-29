@@ -3,6 +3,7 @@
 - mui 스타일로 모서리 둥글게 하기 --> box는 tailwind 잘 적용되니 그걸로 해결
 
 - 완료되면 해볼 것
-    1. checkbox로 완료 누르면 완료 되게
-    2. 완료된 것은 arccordian 안에 넣기
-    3. 완료된 것은 timeline으로 표시하기
+    1. checkbox로 완료 누르면 완료 되게 (완)
+    2. 완료된 것은 arccordian 안에 넣기 (완)
+    3. 완료된 것은 timeline으로 표시하기 (실패 -> mui/lab 설치가 안 됨)
+    4. 3의 대안으로 다시 체크하면 되돌리기 (완)

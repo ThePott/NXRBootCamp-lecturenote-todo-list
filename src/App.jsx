@@ -8,6 +8,7 @@ import { useMemo, useState } from 'react';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 import dummyData from "./dummy-data.json";
+import TodoCompletedMany from './components/TodoCompletedMany';
 
 const App = () => {
   const [todoArray, setTodoArray] = useState(dummyData)
@@ -36,20 +37,7 @@ const App = () => {
         <Box
           className='max-w-md w-full h-[600px] flex flex-col justify-end p-6 m-0 rounded-[48px]'>
 
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1-content"
-              id="panel1-header"
-            >
-              <Typography component="span">Completed</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-              malesuada lacus ex, sit amet blandit leo lobortis eget.
-              <TodoList todoArray={groupedResult.completed} setTodoArray={setTodoArray} editingTodoId={editingTodoId} setEditingTodoId={setEditingTodoId} />
-            </AccordionDetails>
-          </Accordion>
+          <TodoCompletedMany setTodoArray={setTodoArray} completedTodoArray={groupedResult.completed} />
 
           <TodoList todoArray={groupedResult.ongoing} setTodoArray={setTodoArray} editingTodoId={editingTodoId} setEditingTodoId={setEditingTodoId} />
           <TodoInput setTodoArray={setTodoArray} editingTodo={editingTodo} setEditingTodoId={setEditingTodoId} />

@@ -33,9 +33,6 @@ const Todo = React.memo(
                 <ListItem className={isEditing ? `bg-amber-300` : ``}>
                     <Checkbox onChange={handleCompleted} />
                     <ListItemText primary={todo.content} />
-                    {/* <FormGroup>
-                        <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
-                    </FormGroup> */}
 
                     <ButtonGroup variant="contained" aria-label="Basic button group">
 
@@ -53,7 +50,7 @@ const Todo = React.memo(
 
                     </ButtonGroup>
                 </ListItem>
-                <Divider key={`${todo.id}__divider`} component="li" />
+                <Divider component="li" />
             </>
         )
     }
