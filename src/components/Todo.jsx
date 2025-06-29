@@ -30,7 +30,7 @@ const Todo = React.memo(
         console.log("---- checking re-render:", todo.content)
         return (
             <>
-                <ListItem className={isEditing ? `bg-amber-300` : ``}>
+                <ListItem sx={{ paddingX: 0 }} className={isEditing ? `bg-amber-300` : ``}>
                     <Checkbox onChange={handleCompleted} />
                     <ListItemText primary={todo.content} />
 

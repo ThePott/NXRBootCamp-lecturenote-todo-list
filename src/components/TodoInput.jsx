@@ -1,4 +1,4 @@
-import { Button, ListItem, Typography, TextField } from '@mui/material'
+import { Button, ListItem, Typography, TextField, Box } from '@mui/material'
 import React, { useState } from 'react'
 
 const TodoInput = ({ setTodoArray, editingTodo, setEditingTodoId }) => {
@@ -25,7 +25,7 @@ const TodoInput = ({ setTodoArray, editingTodo, setEditingTodoId }) => {
     const buttonText = editingTodo ? `수정하기` : `추가하기`
 
     return (
-        <ListItem className='gap-3'>
+        <Box className='flex gap-3 px-6'>
 
             <TextField 
             label={buttonText} 
@@ -41,7 +41,7 @@ const TodoInput = ({ setTodoArray, editingTodo, setEditingTodoId }) => {
                 </Typography>
             </Button>
 
-        </ListItem>
+        </Box>
     )
 }
 

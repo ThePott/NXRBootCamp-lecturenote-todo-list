@@ -32,16 +32,15 @@ const App = () => {
   return (
     <>
       <Box
-        className='max-w-md w-full mx-auto h-[600px] flex flex-col justify-end rounded-[48px] border-1 border-zinc-300'
-      >
-        <Box
-          className='max-w-md w-full h-[600px] flex flex-col justify-end p-6 m-0 rounded-[48px]'>
-
+        className='max-w-md w-full h-[600px] flex flex-col justify-end py-6 m-0 rounded-[48px] mx-auto border-zinc-300 border-1'>
+        <Box className="overflow-y-scroll pl-6 pr-3 ">
           <TodoCompletedMany setTodoArray={setTodoArray} completedTodoArray={groupedResult.completed} />
 
           <TodoList todoArray={groupedResult.ongoing} setTodoArray={setTodoArray} editingTodoId={editingTodoId} setEditingTodoId={setEditingTodoId} />
-          <TodoInput setTodoArray={setTodoArray} editingTodo={editingTodo} setEditingTodoId={setEditingTodoId} />
         </Box>
+        <TodoInput
+          className="p-6"
+          setTodoArray={setTodoArray} editingTodo={editingTodo} setEditingTodoId={setEditingTodoId} />
       </Box>
     </>
   )

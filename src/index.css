@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+* {
+  /* scrollbar-width: thin; */
+  /* scrollbar-color: var(--white) var(--primary); */
+  scrollbar-color: var(--color-zinc-300) white
+}
+
 html {
   padding: 0;
   margin: 0;
