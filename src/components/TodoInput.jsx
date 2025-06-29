@@ -1,22 +1,23 @@
+import { Button, ListItem, Typography, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
 const TodoInput = ({ setTodoArray, editingTodo, setEditingTodoId }) => {
     const initialValue = (editingTodo && editingTodo.content) || ""
     const [newContent, setNewContent] = useState("")
-    
+
     const addnewContent = () => {
-        if (editingTodo) { 
+        if (editingTodo) {
             editingTodo.content = newContent
             setEditingTodoId(null)
 
-            return 
+            return
         }
 
         const newTodo = {
             id: Number(new Date()),
             content: newContent
         }
-    
+
         setTodoArray((prev) => [...prev, newTodo])
         setNewContent("")
     }
@@ -24,11 +25,23 @@ const TodoInput = ({ setTodoArray, editingTodo, setEditingTodoId }) => {
     const buttonText = editingTodo ? `수정하기` : `추가하기`
 
     return (
-        <>
-            {editingTodo && `editing todo not`}
-            <input type="text" placeholder={initialValue || `할 일`}  value={newContent || initialValue} onChange={(event) => setNewContent(event.target.value)} />
-            <button onClick={addnewContent}>{buttonText}</button>
-        </>
+        <ListItem className='gap-3'>
+
+            <TextField 
+            label={buttonText} 
+            variant="outlined" 
+            value={newContent || initialValue} 
+            onChange={(event) => setNewContent(event.target.value)} 
+            className='grow'
+            />
+
+            <Button onClick={addnewContent} variant='outlined' className='h-full'>
+                <Typography variant='body1'>
+                    {buttonText}
+                </Typography>
+            </Button>
+
+        </ListItem>
     )
 }
 
