@@ -1,7 +1,9 @@
 import React from 'react'
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { ButtonGroup, Button, Divider } from '@mui/material';
+import { ButtonGroup, Button, Divider, Checkbox } from '@mui/material';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import Typography from '@mui/material/Typography';
 
 const Todo = React.memo(
@@ -20,11 +22,20 @@ const Todo = React.memo(
             setEditingTodoId(todo.id)
         }
 
+        const handleCompleted = (event) => {
+            todo["completed"] = event.target.checked
+            setTodoArray((prev) => [...prev])
+        }
+
         console.log("---- checking re-render:", todo.content)
         return (
             <>
                 <ListItem className={isEditing ? `bg-amber-300` : ``}>
+                    <Checkbox onChange={handleCompleted} />
                     <ListItemText primary={todo.content} />
+                    {/* <FormGroup>
+                        <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
+                    </FormGroup> */}
 
                     <ButtonGroup variant="contained" aria-label="Basic button group">
 

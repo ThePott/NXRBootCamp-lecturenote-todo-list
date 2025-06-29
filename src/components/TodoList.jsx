@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 
 const TodoList = ({ todoArray, setTodoArray, editingTodoId, setEditingTodoId }) => {
+    if (!todoArray) { return null }
     return (
         <List>
             {todoArray.map((todo) => (
