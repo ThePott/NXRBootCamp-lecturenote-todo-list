@@ -3,7 +3,7 @@ import TodoInput from './components/TodoInput'
 import TodoList from './components/TodoList'
 import dummyData from "./dummy-data.json"
 import Container from '@mui/material/Container';
-import { Paper } from '@mui/material';
+import { Paper, Box } from '@mui/material';
 
 const App = () => {
   const [todoArray, setTodoArray] = useState(dummyData)
@@ -20,18 +20,15 @@ const App = () => {
 
   return (
     <>
-      <Container
-        disableGutters
-        className='max-w-md w-full h-[600px] flex flex-col justify-end'
+      <Box
+        className='max-w-md w-full mx-auto h-[600px] flex flex-col justify-end rounded-[48px] border-1 border-zinc-300'
       >
-        <Paper
-          elevation={24}
-          variant='outlined'
+        <Box
           className='max-w-md w-full h-[600px] flex flex-col justify-end p-6 m-0 rounded-[48px]'>
           <TodoList todoArray={todoArray} setTodoArray={setTodoArray} editingTodoId={editingTodoId} setEditingTodoId={setEditingTodoId} />
           <TodoInput setTodoArray={setTodoArray} editingTodo={editingTodo} setEditingTodoId={setEditingTodoId} />
-        </Paper>
-      </Container>
+        </Box>
+      </Box>
     </>
   )
 }
